@@ -1,3 +1,25 @@
 .todo-list-container {
     width: 80%;
 }
+
+.todo-list-container > input {
+    padding: 1.4em;
+    width: 100%;
+    background: green;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Arvo', serif;
+    font-size: 1em;
+}
+
+.todo-list-container > input::placeholder {
+    color: white;
+}
+
+.todo-list-container > h1 {
+    text-align: center;
+    color: green;
+    font-size: 5em;
+}
