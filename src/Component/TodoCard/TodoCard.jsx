@@ -6,7 +6,7 @@ class TodoCard extends React.Component {
         let todoContent = this.props.content;
         //eslint-disable-next-line
         let todoCompleted = this.props.completed;
-        return (<h1>{todoContent}</h1>);
+        return (<div className="todo-card-container"><span>{todoContent}</span><input type="checkbox" /></div>);
     }
 }
 

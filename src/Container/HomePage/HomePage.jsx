@@ -1,10 +1,12 @@
-import React  from "react";
+import React from "react";
 import "./HomePage.css";
 import TodoList from "../../Component/TodoList/TodoList";
 
 class HomePage extends React.Component {
     render() {
-        return (<TodoList />);
+        return (
+            <div className="home-page-center-full-screen"><TodoList/></div>
+        );
     }
 }
 

@@ -4,7 +4,7 @@ import "./TodoList.css";
 
 class TodoList extends React.Component {
     render() {
-        return (<TodoCard content="This is contentiano." completed="true"/>);
+        return (<div className="todo-list-container"><TodoCard content="This is contentiano." completed="true"/></div>);
     }
 }
 
