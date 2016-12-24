@@ -1,10 +1,16 @@
 .todo-list-container {
     width: 80%;
+    box-sizing: border-box;
 }
 
-.todo-list-container > input {
-    padding: 1.4em;
+.todo-list-container div {
     width: 100%;
+    display: flex;
+}
+
+#todoInput {
+    padding: 1.4em;
+    width: 80%;
     background: green;
     border: none;
     outline: none;
@@ -14,7 +20,23 @@
     font-size: 1em;
 }
 
-.todo-list-container > input::placeholder {
+.todo-list-container > div > button {
+    width: 18%;
+    margin-left: 2%;
+    font-family: 'Arvo', serif;
+    background-color: #2E7D32;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+}
+
+.todo-list-container button:hover {
+    background-color: #4CAF50;
+}
+
+.todo-list-container input::placeholder {
     color: white;
 }
 
