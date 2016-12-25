@@ -7,7 +7,7 @@ class TodoCard extends React.Component {
         let todoCompleted = this.props.completed;
         return (<div className="todo-card-container">
                     <span>{todoContent}</span>
-                    <input type="checkbox" defaultChecked={todoCompleted} />
+                    <input type="checkbox" defaultChecked={todoCompleted ? {todoCompleted} : ""} />
                 </div>);
     }
 }

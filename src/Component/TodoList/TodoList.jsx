@@ -1,48 +1,38 @@
 import React from "react";
 import TodoCard from "../TodoCard/TodoCard";
+import * as TodoAction from "../../actions/TodoAction";
+import todoStore from "../../stores/TodoStore";
 import "./TodoList.css";
 
 class TodoList extends React.Component {
     constructor() {
         super();
+        this.getTodos = this.getTodos.bind(this);
         this.state = {
-            data: [
-                {
-                    content: "YOYO",
-                    completed: "true"
-                }, {
-                    content: "YOYO",
-                    completed: "true"
-                }, {
-                    content: "YOYO",
-                    completed: "true"
-                }, {
-                    content: "YOYO",
-                    completed: "true"
-                }, {
-                    content: "YOYO",
-                    completed: "true"
-                }
-            ]
+            data: todoStore.getAll()
         };
     }
 
-    addTodo(todo) {
-        if(!todo) return false;
-        let s = this.state;
-        s.data.push({
-            content: todo,
-            completed: "false"
-        });
-        this.setState(s);
-        return true;
+    componentWillMount() {
+        todoStore.on("change", this.getTodos);
     }
 
-    handleChange(e) {
-        const ip = document.getElementById("todoInput");
-        const todo = ip.value;
-        const resp = this.addTodo(todo);
-        if(resp) ip.value = "";
+    componentWillUnmount() {
+        todoStore.removeListener("change", this.getTodos);
+    }
+
+    getTodos() {
+        this.setState({
+            data: todoStore.getAll()
+        });
+    }
+
+    createTodo() {
+        const todoTextBox = document.getElementById("todoInput");
+        if(todoTextBox.value) {
+            TodoAction.createTodo(todoTextBox.value);
+        }
+        todoTextBox.value = "";
     }
 
     render() {
@@ -58,7 +48,7 @@ class TodoList extends React.Component {
                 <h1>Your TODO!!</h1>
                 <div>
                     <input type="text" id="todoInput" placeholder="Enter your Todo !"/>
-                    <button onClick={this.handleChange.bind(this)}>Add</button>
+                    <button onClick={this.createTodo.bind(this)}>Add</button>
                 </div>
                 {elements}
             </div>
